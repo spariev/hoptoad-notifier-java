@@ -123,7 +123,7 @@ public class HoptoadNotifierTest {
   @Test
 	public void testSendExceptionToHoptoadUsingRubyBacktraceAndFilteredSystemProperties() throws InterruptedException {
 		final Exception EXCEPTION = newException(ERROR_MESSAGE);
-		final HoptoadNotice notice = new HoptoadNoticeBuilderUsingFilteredSystemProperties(KEY, new RubyBacktrace(), EXCEPTION, "test").newNotice();
+		final HoptoadNotice notice = new HoptoadNoticeBuilderUsingFilteredSystemProperties(KEY, new RubyBacktrace(), EXCEPTION, "test", null, null, false).newNotice();
 
     assertNoticeReturnsSuccess(notice);
   }

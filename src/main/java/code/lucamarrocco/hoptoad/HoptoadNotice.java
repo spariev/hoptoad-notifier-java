@@ -35,8 +35,17 @@ public class HoptoadNotice {
   private final String url;
 
   private final String component;
+
+  private final String host;
+
+  private final String port;
+
+  private final boolean secure;
   
-  public HoptoadNotice(final String apiKey, String projectRoot, String environmentName, final String errorMessage, String errorClass, final Backtrace backtrace, final Map<String, Object> request, final Map<String, Object> session, final Map<String, Object> environment, final List<String> environmentFilters, boolean hasRequest, String url, String component) {
+  public HoptoadNotice(final String apiKey, String projectRoot, String environmentName, final String errorMessage, String errorClass,
+                       final Backtrace backtrace, final Map<String, Object> request, final Map<String, Object> session, final Map<String, Object> environment,
+                       final List<String> environmentFilters, boolean hasRequest, String url, String component,
+                       final String host, final String port, final boolean secure) {
 		this.apiKey = apiKey;
 		this.projectRoot = projectRoot;
 		this.environmentName=environmentName;
@@ -45,6 +54,9 @@ public class HoptoadNotice {
 		this.backtrace = backtrace;
 		this.request = request;
 		this.session = session;
+        this.host = host;
+        this.port = port;
+        this.secure = secure;
     this.hasRequest = hasRequest;
     this.url = url;
     this.component = component;
@@ -112,5 +124,17 @@ public class HoptoadNotice {
 
     public String projectRoot() {
         return projectRoot;
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public String getPort() {
+        return port;
+    }
+
+    public boolean isSecure() {
+        return secure;
     }
 }

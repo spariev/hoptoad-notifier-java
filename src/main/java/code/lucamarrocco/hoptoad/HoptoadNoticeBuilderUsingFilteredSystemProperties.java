@@ -10,8 +10,14 @@ import org.apache.log4j.MDC;
 
 public class HoptoadNoticeBuilderUsingFilteredSystemProperties extends HoptoadNoticeBuilder {
 
-  public HoptoadNoticeBuilderUsingFilteredSystemProperties(final String apiKey, final Backtrace backtraceBuilder, final Throwable throwable, final String env) {
+  public HoptoadNoticeBuilderUsingFilteredSystemProperties(final String apiKey, final Backtrace backtraceBuilder, final Throwable throwable, final String env, final String host, final String port, final boolean secure) {
     super(apiKey, backtraceBuilder, throwable, env);
+
+    setHost(host);
+
+    setPort(port);
+
+    setSecure(secure);
 
     environment(System.getProperties());
 
