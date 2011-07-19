@@ -1,17 +1,5 @@
 Java Implementation of "Hoptoad's Notifier API version 2":http://help.hoptoadapp.com/faqs/api-2/notifier-api-v2
 Can be also used as an Errbit Client, just set host and port attributes of HoptoadAppender appropriately.
 
-Add to pom.xml to install:
-
-        <repository>
-            <id>spariev-github-hoptoad</id>
-            <name>Hoptoad fork</name>
-            <url>http://github.com/spariev/hoptoad-notifier-java/raw/master/maven2</url>
-        </repository>
-
-        <dependency>
-            <groupId>code.lucamarrocco</groupId>
-            <artifactId>hoptoad-notifier</artifactId>
-            <version>1.7.1</version>
-        </dependency>
+To install, follow instructions at "Clojars":https://clojars.org/code.lucamarrocco/hoptoad-notifier
 
