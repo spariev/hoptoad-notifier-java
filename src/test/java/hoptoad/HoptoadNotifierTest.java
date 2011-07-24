@@ -10,6 +10,7 @@ import static java.util.Arrays.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 import org.apache.commons.logging.*;
@@ -19,6 +20,7 @@ import org.junit.*;
 public class HoptoadNotifierTest {
 
 	public static final String API_KEY = "a603290b07eab460795acf7001558510";
+//    public static final String ERRBIT_API_KEY = "f112909a49cfd189420b335cc8760f85" ;
 
 	protected static final Backtrace BACKTRACE = new Backtrace(asList("backtrace is empty"));;
 	protected static final Map<String, Object> REQUEST = new HashMap<String, Object>();
@@ -91,6 +93,18 @@ public class HoptoadNotifierTest {
 		logger.info("info");
 		logger.warn("warn");
 	}
+
+//    @Test
+//    public void testNotifyToErrbitUsingBuilderNoticeFromExceptionInEnv() {
+//        final Exception EXCEPTION = newException(ERROR_MESSAGE);
+//        HoptoadNoticeBuilder b = new HoptoadNoticeBuilder(ERRBIT_API_KEY, EXCEPTION, "test");
+//        b.setHost("127.0.0.1");
+//        b.setPort("3000");
+//
+//        final HoptoadNotice notice = b.newNotice();
+//
+//        assertThat(notifierV2.notify(notice), is(201));
+//    }
 
 	@Test
 	public void testNotifyToHoptoadUsingBuilderNoticeFromExceptionInEnv() {
