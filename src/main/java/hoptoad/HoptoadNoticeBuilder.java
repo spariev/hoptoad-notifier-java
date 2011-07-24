@@ -33,11 +33,17 @@ public class HoptoadNoticeBuilder {
 
 	private String errorClass;
 
-	private boolean hasRequest = false;
+    private boolean hasRequest = false;
 
-	private String url;
+    private String url;
 
-	private String component;
+    private String component;
+
+    private String host;
+
+    private String port;
+
+    private boolean secure;
 
 	public HoptoadNoticeBuilder(final String apiKey, final Backtrace backtraceBuilder, final Throwable throwable, final String env) {
 		this(apiKey, throwable.getMessage(), env);
@@ -86,7 +92,31 @@ public class HoptoadNoticeBuilder {
 		session.put(key, value);
 	}
 
-	/** An array where each element is a line of the backtrace (required, but can be empty). */
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
+    }
+
+    public boolean isSecure() {
+        return secure;
+    }
+
+    public void setSecure(boolean secure) {
+        this.secure = secure;
+    }
+
+    /** An array where each element is a line of the backtrace (required, but can be empty). */
 	protected void backtrace(final Backtrace backtrace) {
 		this.backtrace = backtrace;
 	}
@@ -154,9 +184,8 @@ public class HoptoadNoticeBuilder {
 		ec2EnvironmentFilters();
 	}
 
-	public HoptoadNotice newNotice() {
-		return new HoptoadNotice(apiKey, projectRoot, environmentName, errorMessage, errorClass, backtrace, request, session, environment, environmentFilters,
-				hasRequest, url, component);
+    public HoptoadNotice newNotice() {
+		return new HoptoadNotice(apiKey, projectRoot, environmentName, errorMessage, errorClass, backtrace, request, session, environment, environmentFilters, hasRequest, url, component, host, port, secure);
 	}
 
 	private boolean notDefined(final Object object) {

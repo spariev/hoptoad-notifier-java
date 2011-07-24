@@ -18,6 +18,12 @@ public class HoptoadAppender extends AppenderSkeleton {
 
 	private Backtrace backtrace = new QuietRubyBacktrace();
 
+    private String host;
+
+    private String port;
+
+    private boolean secure;
+
 	public HoptoadAppender() {
 		setThreshold(Level.ERROR);
 	}
@@ -44,7 +50,7 @@ public class HoptoadAppender extends AppenderSkeleton {
 	public void close() {}
 
 	public HoptoadNotice newNoticeFor(final Throwable throwable) {
-		return new HoptoadNoticeBuilderUsingFilteredSystemProperties(apiKey, backtrace, throwable, env).newNotice();
+		return new HoptoadNoticeBuilderUsingFilteredSystemProperties(apiKey, backtrace, throwable, env, host, port, secure).newNotice();
 	}
 
 	private int notifyThrowableIn(final LoggingEvent loggingEvent) {
@@ -72,7 +78,19 @@ public class HoptoadAppender extends AppenderSkeleton {
 		this.env = env;
 	}
 
-	private boolean thereIsThrowableIn(final LoggingEvent loggingEvent) {
+    public void setHost(final String host) {
+        this.host = host;
+    }
+
+    public void setPort(final String port) {
+        this.port = port;
+    }
+
+    public void setSecure(boolean secure) {
+        this.secure = secure;
+    }
+
+    private boolean thereIsThrowableIn(final LoggingEvent loggingEvent) {
 		return loggingEvent.getThrowableInformation() != null;
 	}
 
