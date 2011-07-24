@@ -14,7 +14,7 @@ public class NoticeApi2 {
 	private final StringBuilder stringBuilder = new StringBuilder();
 
 	public NoticeApi2(HoptoadNotice notice) {
-		notice("2.0.0");
+		notice("2.0");
 		{
 			apikey(notice);
 

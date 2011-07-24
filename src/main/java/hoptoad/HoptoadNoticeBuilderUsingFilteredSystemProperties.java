@@ -10,7 +10,7 @@ import org.apache.log4j.*;
 
 public class HoptoadNoticeBuilderUsingFilteredSystemProperties extends HoptoadNoticeBuilder {
 
-	public HoptoadNoticeBuilderUsingFilteredSystemProperties(final String apiKey, final Backtrace backtraceBuilder, final Throwable throwable, final String env) {
+	public HoptoadNoticeBuilderUsingFilteredSystemProperties(final String apiKey, final Backtrace backtraceBuilder, final Throwable throwable, final String env, final String host, final String port, final boolean secure) {
 		super(apiKey, backtraceBuilder, throwable, env);
 
 		environment(System.getProperties());
@@ -20,6 +20,10 @@ public class HoptoadNoticeBuilderUsingFilteredSystemProperties extends HoptoadNo
 		standardEnvironmentFilters();
 
 		ec2EnvironmentFilters();
+
+        setHost(host);
+        setPort(port);
+        setSecure(secure);
 	}
 
 	private void addMDCToSession() {
