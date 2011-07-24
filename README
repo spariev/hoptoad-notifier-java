@@ -1,5 +1,0 @@
-Java Implementation of "Hoptoad's Notifier API version 2":http://help.hoptoadapp.com/faqs/api-2/notifier-api-v2
-Can be also used as an Errbit Client, just set host and port attributes of HoptoadAppender appropriately.
-
-To install, follow instructions at "Clojars":https://clojars.org/code.lucamarrocco/hoptoad-notifier
-
